@@ -1,0 +1,31 @@
+
+１.　项目要求
+27~29日：使用最基础的tornado框架（不需要现在用的额外框架），pymongo 实现以下这个模块：
+地址模块，
+1.需要有增删改差四个基本功能（url用/api/address），
+(增:用post方法 几个必要字段是 user_id,province,city,area,address,is_default_flag,add_time)
+(删:用delete方法 根据address的唯一_id删除数据)
+(改:用put方法 可以修改除了user_id,唯一_id的其他栏位) 
+(查:用get方法 根据唯一_id查找此条地址)
+2.其他功能
+(获取用户地址列表：url:/api/address/list 方法：get 根据 user_id 获取该用户所有的地址，根据是否是默认以及添加时间反序排列 就是默认的在第一个，后面是越新添加的越前面 )
+(修改用户默认地址: url:/api/address/default 方法:put 根据给出的user_id,address的唯一_id 将选中的address设成默认(is_default_flag = 1),其他的设成0 )
+
+最好含有基础的异常处理
+返回Json数据格式统一为{"success":[0或1 0为失败 1为成功],"return_code":[当success为0时返回错误信息 为1时返回success],"data":[成功时返回需要的数据]}
+
+２.　项目介绍
+
+main.py : 程序启动模块
+settings.py : 服务器配置模块
+models.py : 数据操作接口模块
+handlers.py : 业务处理模块
+status.py : 状态码配置模块
+types.py : 类型配置模块
+utils.py :公用接口模块
+
+３.　使用说明
+
+（1）在 models.py 所在目录执行 python models.py 初始化 测试数据
+（2）在 main.py 所在目录执行 python main.py 启动 web 服务
+（3）客户端发送请求测试服务器功能
